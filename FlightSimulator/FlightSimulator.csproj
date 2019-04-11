@@ -66,9 +66,11 @@
     <Compile Include="Model\ApplicationSettingsModel.cs" />
     <Compile Include="Model\CommandHandler.cs" />
     <Compile Include="Model\EventArgs\VirtualJoystickEventArgs.cs" />
+    <Compile Include="Model\Interface\IModel.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
     <Compile Include="Model\Interface\ITelnetClient.cs" />
     <Compile Include="Model\Interface\ITelnetServer.cs" />
+    <Compile Include="Model\MyModel.cs" />
     <Compile Include="Model\MyTcpClient.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
