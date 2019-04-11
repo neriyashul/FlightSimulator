@@ -16,9 +16,7 @@ namespace FlightSimulator.Model
         private TcpClient client;
         private bool stop;
 
-        public MyTcpClient()
-        {
-        }
+        public MyTcpClient() {}
 
         public void connect(string ip, int port)
         {
