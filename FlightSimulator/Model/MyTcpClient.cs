@@ -28,7 +28,10 @@ namespace FlightSimulator.Model
 
         public void disconnect()
         {
-            client.Close();
+            if (client != null)
+            {
+                client.Close();
+            }
         }
 
         public void read()
@@ -41,22 +44,10 @@ namespace FlightSimulator.Model
             using (BinaryReader reader = new BinaryReader(stream))
             using (BinaryWriter writer = new BinaryWriter(stream))
             {
-                // Send data to server
-                Console.Write("Please enter a number: ");
-                int num = int.Parse(Console.ReadLine());
-                writer.Write(num);
+                writer.Write(command);
                 // Get result from server
                 int result = reader.ReadInt32();
-                Console.WriteLine("Result = {0}", result);
-
-
-
-
-
-                telnetClient.write("get left sonar");
-                LeftSonar = Double.Parse(telnetClient.read());
-                // the same for the other sensors properties
-                Thread.Sleep(250);// read the data in 4Hz
+                Console.WriteLine(result);
             }
         }
     }
