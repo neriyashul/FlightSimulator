@@ -4,11 +4,62 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
+        xmlns:View="clr-namespace:FlightSimulator.Views"
         xmlns:Windows="clr-namespace:FlightSimulator.Views.Windows" x:Class="FlightSimulator.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="514.333" Width="800">
-    <Grid>
-        <Windows:AutoControl Margin="339,71,68.333,150.667"></Windows:AutoControl>
-    </Grid>
+        Title="MainWindow" Height="550.333" Width="800">
+    <Grid RenderTransformOrigin="0.68,0.511">
+        <Grid.Resources>
+            <Style x:Key="mySliderStyle" TargetType="Slider">
+                <Setter Property="Value" Value="0" />
+                <Setter Property="Minimum" Value="-1" />
+                <Setter Property="Maximum" Value="1" />
+                <Setter Property="TickFrequency" Value="0.1"/>
+                <Setter Property="IsSnapToTickEnabled" Value="True"/>
+                <Setter Property="TickPlacement" Value="BottomRight"/>
+                <Setter Property="Width" Value="357"/>
+                <Setter Property="Height" Value="85"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+        </Grid.Resources>
+
+        <Slider x:Name="throttleSlider" Style="{StaticResource mySliderStyle}" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
+            <Slider.RenderTransform>
+                <RotateTransform Angle="-90"/>
+            </Slider.RenderTransform>
+        </Slider>
+
+        <Slider x:Name="rudderSlider" Style="{StaticResource mySliderStyle}" Margin="0,-15"  VerticalAlignment="Bottom"  ValueChanged="Slider_ValueChanged_1">
+
+        </Slider>
+
+        <View:Joystick Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Loaded="Joystick_Loaded_1"/>
+
+        <Label Content=" ← rudder →" VerticalAlignment="Bottom"  Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+
+        <Label Content=" ← aileron →" VerticalAlignment="Top"  Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+        <Label Content=" ← throttle →" VerticalAlignment="Center"  Margin="0,10" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <RotateTransform Angle="90"/>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content=" ← elevator →" VerticalAlignment="Center"  Margin="0,10" HorizontalAlignment="Right" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <RotateTransform Angle="-90"/>
+            </Label.RenderTransform>
+        </Label>
+        <TextBlock x:Name="rudderTextBlock" Text="{Binding ElementName=rudderSlider, Path=Value}" VerticalAlignment="Bottom"  Margin="0,0,320,20" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap"/>
+        <TextBlock x:Name="throttleTextBlock" Text="{Binding ElementName=throttleSlider, Path=Value}" VerticalAlignment="Center"  Margin="40,0,0,280" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap"/>
+        <TextBlock x:Name="aileronTextBox" Text="add binding" VerticalAlignment="Top"  Margin="480,10,0,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+        <TextBlock x:Name="elevatorTextBlock" Text="add binding" VerticalAlignment="Center"  Margin="40,0,0,280" HorizontalAlignment="Right" FontWeight="Bold" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <RotateTransform Angle="-90"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
         
+
+
+    </Grid>
+
 </Window>

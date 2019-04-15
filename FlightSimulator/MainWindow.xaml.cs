@@ -24,12 +24,17 @@ namespace FlightSimulator
         public MainWindow()
         {
             InitializeComponent();
-            // vm = new ViewModel(new MyModel(new TCP));
         }
 
-        private void AutoControl_Loaded(object sender, RoutedEventArgs e)
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }
+
+        private void Slider_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
     }
 }

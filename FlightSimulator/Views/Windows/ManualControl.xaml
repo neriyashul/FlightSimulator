@@ -7,10 +7,10 @@
              xmlns:View="clr-namespace:FlightSimulator.Views"
              
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="804">
 
     <Grid>
-        <View:Joystick Cursor="None"></View:Joystick>
+        <View:Joystick x:Name="joystick"  Cursor="None"></View:Joystick>
         <Slider x:Name="slider" HorizontalAlignment="Left" TickPlacement="BottomRight" Value="0" Minimum="-1" Maximum="1" TickFrequency="0.1" VerticalAlignment="Center" Width="357" Margin="-52,177,0,188" Height="85" RenderTransformOrigin="0.454,1" FontSize="48" Cursor="None" ValueChanged="Slider_ValueChanged_1">
             <Slider.RenderTransform>
                 <TransformGroup>
