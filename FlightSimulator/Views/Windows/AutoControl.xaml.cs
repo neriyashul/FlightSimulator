@@ -20,9 +20,33 @@ namespace FlightSimulator.Views.Windows
     /// </summary>
     public partial class AutoControl : UserControl
     {
+        private SolidColorBrush TextBoxColor = Brushes.White;
+        //private ViewModels vm;
+
         public AutoControl()
         {
             InitializeComponent();
+            textBox.Background = TextBoxColor;
+            // vm = new ViewModel(new MyModel(new TCP));
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            textBox.Background = Brushes.LightCoral;
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            textBox.Background = TextBoxColor;
+            textBox.Text = String.Empty;
+        }
+
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+            //vm.write(textBox.Text);
+            textBox.Background = TextBoxColor;
+            //textBox.Text = String.Empty;
         }
     }
 }
+

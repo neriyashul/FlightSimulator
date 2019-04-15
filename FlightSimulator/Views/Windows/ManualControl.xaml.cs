@@ -10,24 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightSimulator
+namespace FlightSimulator.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for manual.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class manual : UserControl
     {
-        private SolidColorBrush TextBoxColor = Brushes.White;
-        //private ViewModels vm;
-        public MainWindow()
+        public manual()
         {
             InitializeComponent();
-            // vm = new ViewModel(new MyModel(new TCP));
         }
 
-        private void AutoControl_Loaded(object sender, RoutedEventArgs e)
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void Slider_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }
