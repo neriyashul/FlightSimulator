@@ -19,9 +19,31 @@ namespace FlightSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SolidColorBrush TextBoxColor = Brushes.White;
         public MainWindow()
         {
             InitializeComponent();
+            textBox.Background = TextBoxColor;
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            textBox.Background = Brushes.LightCoral;
+            if (e.Key == Key.Enter)
+            {
+                textBox.Text += Environment.NewLine;
+            }
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            textBox.Background = TextBoxColor;
+            textBox.Text = "";
+        }
+
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

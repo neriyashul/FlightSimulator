@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="514.333" Width="800">
+
+    <Window.Resources>
+    </Window.Resources>
+    <StackPanel>
+
+        <TextBox x:Name="textBox" Height="400" TextWrapping="Wrap" KeyDown="OnKeyDownHandler" Text=""/>
         
-    </Grid>
+        <WrapPanel>
+            <Button x:Name="OKButton" Content="OK" Click="OKButton_Click"
+                    HorizontalAlignment="Center" Width="83" Margin="200,0" FontSize="16" FontWeight="Bold" />
+            <Button x:Name="ClearButton" Content="Clear" Click="ClearButton_Click"
+                    HorizontalAlignment="Center" Width="83" Height="30" FontWeight="Bold" FontSize="16"  />
+        </WrapPanel>
+    </StackPanel>
 </Window>

@@ -43,7 +43,7 @@ namespace FlightSimulator.Model
 
         public void openServer(string ip, int port)
         {
-            this.server.start(ip, port);
+            this.server.start();
         }
 
 
