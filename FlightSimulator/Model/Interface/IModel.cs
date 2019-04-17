@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace FlightSimulator.Model.Interface
 {
-    interface IModel : INotifyPropertyChanged
+    public interface IModel : INotifyPropertyChanged
     {
         //public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,6 +18,7 @@ namespace FlightSimulator.Model.Interface
         // clients
         void connectClient(ITelnetClient c);
         void disconnectClient();
-        void start();
+        void sendStrCommand(string command);
+        void sendFloatCommand(string strCommand, float command);
     }
 }

@@ -72,9 +72,11 @@
     <Compile Include="Model\Interface\ITelnetServer.cs" />
     <Compile Include="Model\MyModel.cs" />
     <Compile Include="Model\MyTcpClient.cs" />
+    <Compile Include="Model\MyTcpServer.cs" />
     <Compile Include="ViewModels\AutoControlViewModel.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
+    <Compile Include="ViewModels\ManualControlViewModel.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />
     <Compile Include="Views\FlightBoard.xaml.cs">
       <DependentUpon>FlightBoard.xaml</DependentUpon>

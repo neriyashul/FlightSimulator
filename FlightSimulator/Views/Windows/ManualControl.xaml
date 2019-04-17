@@ -25,17 +25,15 @@
 
         </Grid.Resources>
 
-        <Slider x:Name="throttleSlider" Style="{StaticResource mySliderStyle}" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
+        <Slider x:Name="throttleSlider" Style="{StaticResource mySliderStyle}" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Value="{Binding Throttle, Mode=TwoWay}" ValueChanged="Slider_Throttle_Changed">
             <Slider.RenderTransform>
                 <RotateTransform Angle="-90"/>
             </Slider.RenderTransform>
         </Slider>
 
-        <Slider x:Name="rudderSlider" Style="{StaticResource mySliderStyle}" Margin="0,-15"  VerticalAlignment="Bottom"  ValueChanged="Slider_ValueChanged_1">
+        <Slider x:Name="rudderSlider" Style="{StaticResource mySliderStyle}" Margin="0,-15"  VerticalAlignment="Bottom" Value="{Binding Ruddle, Mode=TwoWay}"/>
 
-        </Slider>
-
-        <View:Joystick x:Name="joystick" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <View:Joystick x:Name="joystick" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Loaded="Joystick_Loaded"/>
 
         <Label Content=" ← rudder →" VerticalAlignment="Bottom"  Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
 
@@ -52,8 +50,9 @@
         </Label>
         <TextBlock x:Name="rudderTextBlock" Text="{Binding ElementName=rudderSlider, Path=Value}" VerticalAlignment="Bottom"  Margin="0,0,320,20" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap"/>
         <TextBlock x:Name="throttleTextBlock" Text="{Binding ElementName=throttleSlider, Path=Value}" VerticalAlignment="Center"  Margin="40,0,0,280" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap"/>
-        <TextBlock x:Name="aileronTextBox" Text="add binding" VerticalAlignment="Top"  Margin="480,10,0,0" HorizontalAlignment="Center" FontWeight="Bold"/>
-        <TextBlock x:Name="elevatorTextBlock" Text="add binding" VerticalAlignment="Center"  Margin="40,0,0,280" HorizontalAlignment="Right" FontWeight="Bold" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5">
+        <TextBlock x:Name="aileronTextBox" Text="{Binding ElementName=joystick, Path=Aileron}" VerticalAlignment="Top"  Margin="480,10,0,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+
+        <TextBlock x:Name="elevatorTextBlock" Text="{Binding ElementName=joystick, Path=Elevator}" VerticalAlignment="Center"  Margin="700,60,-14,374" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Width="118">
             <TextBlock.RenderTransform>
                 <RotateTransform Angle="-90"/>
             </TextBlock.RenderTransform>

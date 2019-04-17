@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FlightSimulator.Model;
+using FlightSimulator.Model.Interface;
+using FlightSimulator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,17 +23,33 @@ namespace FlightSimulator.Views.Windows
     /// </summary>
     public partial class ManualControl : UserControl
     {
+        private ManualControlViewModel vm;
         public ManualControl()
         {
             InitializeComponent();
+
+            ITelnetServer a = new MyTcpServer();
+            ITelnetClient c = new MyTcpClient();
+            vm = new ManualControlViewModel(new MyModel(a, c));
+            DataContext = vm;
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            
+        }
+
+        private void Slider_Rudder_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            
+        }
+
+        private void Joystick_Loaded(object sender, RoutedEventArgs e)
+        {
 
         }
 
-        private void Slider_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void Slider_Throttle_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }

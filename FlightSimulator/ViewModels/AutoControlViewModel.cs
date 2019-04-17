@@ -7,20 +7,31 @@ using FlightSimulator.Model.Interface;
 
 namespace FlightSimulator.ViewModels
 {
-    class AutoControlViewModel : BaseNotify
+    public class AutoControlViewModel : BaseNotify
     {
         private IModel model;
-        string arr;
-        AutoControlViewModel(IModel imodel)
+        private string strCommands;
+        public AutoControlViewModel(IModel imodel)
         {
             model = imodel;
         }
         public string commands
         {
-            set;
-            get;
+            set
+            {
+                strCommands = value;
+                NotifyPropertyChanged("commands");
+            }
+            get
+            {
+                return strCommands;
+            }
         }
 
+        public void sendCommands()
+        {
+            model.sendStrCommand(commands);
+        }
 
     }
 }
