@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="FlightSimulator.Views.Windows.manual"
+﻿<UserControl x:Class="FlightSimulator.Views.Windows.ManualControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,17 +10,53 @@
              d:DesignHeight="450" d:DesignWidth="804">
 
     <Grid>
-        <View:Joystick x:Name="joystick"  Cursor="None"></View:Joystick>
-        <Slider x:Name="slider" HorizontalAlignment="Left" TickPlacement="BottomRight" Value="0" Minimum="-1" Maximum="1" TickFrequency="0.1" VerticalAlignment="Center" Width="357" Margin="-52,177,0,188" Height="85" RenderTransformOrigin="0.454,1" FontSize="48" Cursor="None" ValueChanged="Slider_ValueChanged_1">
+        <Grid.Resources>
+            <Style x:Key="mySliderStyle" TargetType="Slider">
+                <Setter Property="Value" Value="0" />
+                <Setter Property="Minimum" Value="-1" />
+                <Setter Property="Maximum" Value="1" />
+                <Setter Property="TickFrequency" Value="0.1"/>
+                <Setter Property="IsSnapToTickEnabled" Value="True"/>
+                <Setter Property="TickPlacement" Value="BottomRight"/>
+                <Setter Property="Width" Value="357"/>
+                <Setter Property="Height" Value="85"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+        </Grid.Resources>
+
+        <Slider x:Name="throttleSlider" Style="{StaticResource mySliderStyle}" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
             <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
+                <RotateTransform Angle="-90"/>
             </Slider.RenderTransform>
         </Slider>
 
+        <Slider x:Name="rudderSlider" Style="{StaticResource mySliderStyle}" Margin="0,-15"  VerticalAlignment="Bottom"  ValueChanged="Slider_ValueChanged_1">
+
+        </Slider>
+
+        <View:Joystick x:Name="joystick" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <Label Content=" ← rudder →" VerticalAlignment="Bottom"  Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+
+        <Label Content=" ← aileron →" VerticalAlignment="Top"  Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+        <Label Content=" ← throttle →" VerticalAlignment="Center"  Margin="0,10" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <RotateTransform Angle="90"/>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content=" ← elevator →" VerticalAlignment="Center"  Margin="0,10" HorizontalAlignment="Right" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <RotateTransform Angle="-90"/>
+            </Label.RenderTransform>
+        </Label>
+        <TextBlock x:Name="rudderTextBlock" Text="{Binding ElementName=rudderSlider, Path=Value}" VerticalAlignment="Bottom"  Margin="0,0,320,20" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap"/>
+        <TextBlock x:Name="throttleTextBlock" Text="{Binding ElementName=throttleSlider, Path=Value}" VerticalAlignment="Center"  Margin="40,0,0,280" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap"/>
+        <TextBlock x:Name="aileronTextBox" Text="add binding" VerticalAlignment="Top"  Margin="480,10,0,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+        <TextBlock x:Name="elevatorTextBlock" Text="add binding" VerticalAlignment="Center"  Margin="40,0,0,280" HorizontalAlignment="Right" FontWeight="Bold" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <RotateTransform Angle="-90"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
     </Grid>
 </UserControl>

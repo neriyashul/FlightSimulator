@@ -18,9 +18,9 @@ namespace FlightSimulator.Views.Windows
     /// <summary>
     /// Interaction logic for manual.xaml
     /// </summary>
-    public partial class manual : UserControl
+    public partial class ManualControl : UserControl
     {
-        public manual()
+        public ManualControl()
         {
             InitializeComponent();
         }
