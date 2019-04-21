@@ -23,38 +23,21 @@ namespace FlightSimulator.Views.Windows
     /// </summary>
     public partial class AutoControl : UserControl
     {
-        private SolidColorBrush TextBoxColor = Brushes.White;
         private AutoControlViewModel vm;
 
         public AutoControl()
         {
-            InitializeComponent();
-            textBox.Background = TextBoxColor;
+            
 
             ITelnetServer a = new MyTcpServer();
             ITelnetClient c = new MyTcpClient();
             vm = new AutoControlViewModel(new MyModel(a, c));
+            InitializeComponent();
             DataContext = vm;
+            
 
         }
 
-        private void OnKeyDownHandler(object sender, KeyEventArgs e)
-        {
-            textBox.Background = Brushes.LightCoral;
-        }
-
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
-        {
-            textBox.Background = TextBoxColor;
-            textBox.Text = String.Empty;
-        }
-
-        private void OKButton_Click(object sender, RoutedEventArgs e)
-        {
-            vm.sendCommands();
-            textBox.Background = TextBoxColor;
-            textBox.Text = String.Empty;
-        }
     }
 }
 

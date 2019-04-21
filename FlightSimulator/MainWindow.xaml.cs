@@ -21,21 +21,16 @@ namespace FlightSimulator
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {  
+    public partial class MainWindow : Window {
+        private AutoControlViewModel vm;
         public MainWindow()
         {
             InitializeComponent();
-            
-        }
 
-        private void AutoControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            ITelnetServer a = new MyTcpServer();
+            ITelnetClient c = new MyTcpClient();
+            vm = new AutoControlViewModel(new MyModel(a, c));
+            DataContext = vm;
         }
     }
 }
