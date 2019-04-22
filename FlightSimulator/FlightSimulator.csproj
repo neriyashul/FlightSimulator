@@ -92,6 +92,9 @@
     <Compile Include="Views\Windows\ManualControl.xaml.cs">
       <DependentUpon>ManualControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Windows\SettingUserControl.xaml.cs">
+      <DependentUpon>SettingUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Windows\ManualControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\SettingUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

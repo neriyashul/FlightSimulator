@@ -7,6 +7,4 @@
         xmlns:View="clr-namespace:FlightSimulator.Views"
         xmlns:Windows="clr-namespace:FlightSimulator.Views.Windows" x:Class="FlightSimulator.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550.333" Width="800">
-    <Windows:AutoControl HorizontalAlignment="Left" Height="273" VerticalAlignment="Top" Width="312" Margin="378,152,0,0" Loaded="AutoControl_Loaded" />
-</Window>
+        Title="MainWindow" Height="550.333" Width="800"/>
