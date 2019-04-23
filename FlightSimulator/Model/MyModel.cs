@@ -51,12 +51,13 @@ namespace FlightSimulator.Model
             this.server.start();
         }
 
-        public void sendFloatCommand(string strCommand, float command)
+        public void sendStringCommand(string command)
         {
-            throw new NotImplementedException();
+            client.write(command);
         }
 
-        public void sendStrCommand(string commands)
+
+        public void sendStringCommandsWithSleep(string commands, int sleepTime)
         {
             Task t = new Task(() => {
                 string[] commandsByline = commands.Split(
@@ -66,7 +67,7 @@ namespace FlightSimulator.Model
                 foreach (string command in commandsByline)
                 {
                     client.write(command);
-                    Thread.Sleep(2000);
+                    Thread.Sleep(sleepTime);
                 }   
            });
             t.Start();

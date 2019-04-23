@@ -47,7 +47,7 @@ namespace FlightSimulator.ViewModels
             {
                 model.connectClient(ip, port);
             }
-            model.sendStrCommand(strCommands);
+            model.sendStringCommandsWithSleep(strCommands, 2000);
         }
 
         public string BackgroundColor {

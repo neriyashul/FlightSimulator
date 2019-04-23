@@ -24,14 +24,14 @@ namespace FlightSimulator
 
     
     public partial class MainWindow : Window {
-        private AutoControlViewModel vm;
+        private ManualControlViewModel vm;
         public static IModel model;
         public MainWindow()
         {
             ITelnetServer s = new MyTcpServer();
             ITelnetClient c = new MyTcpClient();
             model = new MyModel(s, c);
-            vm = new AutoControlViewModel(ref model);
+            vm = new ManualControlViewModel(model);
 
             InitializeComponent();
             DataContext = vm;

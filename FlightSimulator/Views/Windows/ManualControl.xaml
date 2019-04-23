@@ -31,7 +31,7 @@
             </Slider.RenderTransform>
         </Slider>
 
-        <Slider x:Name="rudderSlider" Style="{StaticResource mySliderStyle}" Margin="0,-15"  VerticalAlignment="Bottom" Value="{Binding Ruddle, Mode=TwoWay}"/>
+        <Slider x:Name="rudderSlider" Style="{StaticResource mySliderStyle}" Margin="0,-15"  VerticalAlignment="Bottom" Value="{Binding Rudder, Mode=TwoWay}"/>
 
         <View:Joystick x:Name="joystick" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Loaded="Joystick_Loaded"/>
 

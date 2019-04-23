@@ -1,4 +1,5 @@
-﻿using FlightSimulator.Model.Interface;
+﻿using FlightSimulator.Model;
+using FlightSimulator.Model.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,27 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.ViewModels
 {
-    public class ManualControlViewModel
+    public class ManualControlViewModel : BaseNotify
     {
         private IModel model;
         private float throttle;
         private float rudder;
+        private string ip = ApplicationSettingsModel.Instance.FlightServerIP;
+        private int port = ApplicationSettingsModel.Instance.FlightCommandPort;
+
         public ManualControlViewModel(IModel imodel)
         {
             model = imodel;
         }
 
+        private void sendStringCommand(string command)
+        {
+            if (!model.isClientConnected())
+            {
+                model.connectClient(ip, port);
+            }
+            model.sendStringCommand(command);
+        }
         public float Throttle
         {
             get
@@ -27,7 +39,8 @@ namespace FlightSimulator.ViewModels
             set
             {
                 throttle = value;
-                model.sendFloatCommand("throttle", throttle);
+                sendStringCommand("set /controls/engines/engine/throttle " + throttle);
+                NotifyPropertyChanged("Throttle");
             }
         }
         public float Rudder
@@ -40,13 +53,10 @@ namespace FlightSimulator.ViewModels
             set
             {
                 rudder = value;
-                model.sendFloatCommand("rudder", rudder);
-            }
-        }
+                sendStringCommand("set /controls/flight/rudder "+ rudder);
+                NotifyPropertyChanged("Rudder");
 
-        public static implicit operator ManualControlViewModel(AutoControlViewModel v)
-        {
-            throw new NotImplementedException();
+            }
         }
     }
 }

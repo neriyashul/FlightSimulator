@@ -20,7 +20,7 @@ namespace FlightSimulator.Model.Interface
 
         bool isClientConnected();
         void disconnectClient();
-        void sendStrCommand(string command);
-        void sendFloatCommand(string strCommand, float command);
+        void sendStringCommandsWithSleep(string command, int sleepTime);
+        void sendStringCommand(string command);
     }
 }
