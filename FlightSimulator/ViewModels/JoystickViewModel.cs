@@ -1,5 +1,7 @@
 ﻿using FlightSimulator.Model;
+using FlightSimulator.Model.EventArgs;
 using FlightSimulator.Model.Interface;
+using FlightSimulator.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +10,14 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.ViewModels
 {
-    public class ManualControlViewModel : BaseNotify
+    class JoystickViewModel : BaseNotify
     {
-        private IModel model;
-        private float throttle;
-        private float rudder;
-        
-
-        public ManualControlViewModel(IModel imodel)
+        float aileron;
+        float elevator;
+        IModel model;
+        public JoystickViewModel()
         {
-            model = imodel;
+            model = MainWindow.model;
         }
 
         private void sendStringCommand(string command)
@@ -30,34 +30,34 @@ namespace FlightSimulator.ViewModels
             }
             model.sendStringCommand(command);
         }
-        public float Throttle
+        public float Aileron
         {
             get
             {
-                return throttle;
+                return aileron;
             }
-
             set
             {
-                throttle = value;
-                sendStringCommand("set /controls/engines/engine/throttle " + throttle);
-                NotifyPropertyChanged("Throttle");
+                aileron = value;
+                sendStringCommand("set /controls/flight/aileron " + aileron);
+                NotifyPropertyChanged("Aileron");
             }
         }
-        public float Rudder
+        public float Elevator
         {
             get
             {
-                return rudder;
+                return elevator;
             }
-
             set
             {
-                rudder = value;
-                sendStringCommand("set /controls/flight/rudder "+ rudder);
-                NotifyPropertyChanged("Rudder");
+                elevator = value;
+                sendStringCommand("set /controls/flight/elevator " + elevator);
+                NotifyPropertyChanged("Elevator");
 
             }
         }
+
+
     }
 }

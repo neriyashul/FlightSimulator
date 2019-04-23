@@ -32,7 +32,6 @@ namespace FlightSimulator
             ITelnetClient c = new MyTcpClient();
             model = new MyModel(s, c);
             vm = new ManualControlViewModel(model);
-
             InitializeComponent();
             DataContext = vm;
         }

@@ -34,24 +34,5 @@ namespace FlightSimulator.Views.Windows
             DataContext = vm;
         }
 
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            
-        }
-
-        private void Slider_Rudder_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            
-        }
-
-        private void Joystick_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Slider_Throttle_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
     }
 }

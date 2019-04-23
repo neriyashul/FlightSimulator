@@ -1,4 +1,5 @@
 ﻿using FlightSimulator.Model.EventArgs;
+using FlightSimulator.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,6 +110,7 @@ namespace FlightSimulator.Views
         private double canvasWidth, canvasHeight;
         private readonly Storyboard centerKnob;
 
+        private JoystickViewModel vm = new JoystickViewModel();
         public Joystick()
         {
             InitializeComponent();
@@ -116,7 +118,7 @@ namespace FlightSimulator.Views
             Knob.MouseLeftButtonDown += Knob_MouseLeftButtonDown;
             Knob.MouseLeftButtonUp += Knob_MouseLeftButtonUp;
             Knob.MouseMove += Knob_MouseMove;
-
+            Moved += updateVMArgsAfterMoved;
             centerKnob = Knob.Resources["CenterKnob"] as Storyboard;
         }
 
@@ -146,6 +148,7 @@ namespace FlightSimulator.Views
             double distance = Math.Round(Math.Sqrt(deltaPos.X * deltaPos.X + deltaPos.Y * deltaPos.Y));
             if (distance >= canvasWidth / 2 || distance >= canvasHeight / 2)
                 return;
+            // normalization by divide in 124
             Aileron = -deltaPos.Y;
             Elevator = deltaPos.X;
 
@@ -156,11 +159,21 @@ namespace FlightSimulator.Views
                 (!(Math.Abs(_prevAileron - Aileron) > AileronStep) && !(Math.Abs(_prevElevator - Elevator) > ElevatorStep)))
                 return;
 
+            Aileron = Aileron / 124;
+            Elevator = Elevator / 124;
+
             Moved?.Invoke(this, new VirtualJoystickEventArgs { Aileron = Aileron, Elevator = Elevator });
             _prevAileron = Aileron;
             _prevElevator = Elevator;
 
         }
+
+        public void updateVMArgsAfterMoved(Joystick sender, VirtualJoystickEventArgs args)
+        {
+            vm.Aileron = (float)args.Aileron;
+            vm.Elevator = (float)args.Aileron;
+        }
+
 
         private void Knob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {

@@ -25,15 +25,11 @@
 
         </Grid.Resources>
 
-        <Slider x:Name="throttleSlider" Style="{StaticResource mySliderStyle}" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Value="{Binding Throttle, Mode=TwoWay}" ValueChanged="Slider_Throttle_Changed">
-            <Slider.RenderTransform>
-                <RotateTransform Angle="-90"/>
-            </Slider.RenderTransform>
-        </Slider>
+        <Slider x:Name="throttleSlider" Style="{StaticResource mySliderStyle}" HorizontalAlignment="Left"  Value="{Binding Throttle, Mode=TwoWay}" Orientation="Vertical" Height="256" Margin="16,98,0,96" Width="32"/>
 
         <Slider x:Name="rudderSlider" Style="{StaticResource mySliderStyle}" Margin="0,-15"  VerticalAlignment="Bottom" Value="{Binding Rudder, Mode=TwoWay}"/>
 
-        <View:Joystick x:Name="joystick" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Loaded="Joystick_Loaded"/>
+        <View:Joystick x:Name="joystick" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
         <Label Content=" ← rudder →" VerticalAlignment="Bottom"  Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
 
@@ -48,11 +44,11 @@
                 <RotateTransform Angle="-90"/>
             </Label.RenderTransform>
         </Label>
-        <TextBlock x:Name="rudderTextBlock" Text="{Binding ElementName=rudderSlider, Path=Value}" VerticalAlignment="Bottom"  Margin="0,0,320,20" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap"/>
-        <TextBlock x:Name="throttleTextBlock" Text="{Binding ElementName=throttleSlider, Path=Value}" VerticalAlignment="Center"  Margin="40,0,0,280" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap"/>
-        <TextBlock x:Name="aileronTextBox" Text="{Binding ElementName=joystick, Path=Aileron}" VerticalAlignment="Top"  Margin="480,10,0,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+        <TextBlock x:Name="rudderTextBlock" Text="{Binding ElementName=rudderSlider, Path=Value, StringFormat=N1}" VerticalAlignment="Bottom"  Margin="0,0,320,20" HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap"/>
+        <TextBlock x:Name="throttleTextBlock" Text="{Binding ElementName=throttleSlider, Path=Value, StringFormat=N1}" VerticalAlignment="Center"  Margin="40,0,0,280" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap"/>
+        <TextBlock x:Name="aileronTextBox" Text="{Binding ElementName=joystick, Path=Aileron, StringFormat=N2}" VerticalAlignment="Top"  Margin="480,10,0,0" HorizontalAlignment="Center" FontWeight="Bold"/>
 
-        <TextBlock x:Name="elevatorTextBlock" Text="{Binding ElementName=joystick, Path=Elevator}" VerticalAlignment="Center"  Margin="700,60,-14,374" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Width="118">
+        <TextBlock x:Name="elevatorTextBlock" Text="{Binding ElementName=joystick, Path=Elevator, StringFormat=N2}" VerticalAlignment="Center"  Margin="700,60,-14,374" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Width="118">
             <TextBlock.RenderTransform>
                 <RotateTransform Angle="-90"/>
             </TextBlock.RenderTransform>
