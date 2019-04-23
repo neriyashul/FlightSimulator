@@ -27,17 +27,11 @@ namespace FlightSimulator.Views.Windows
 
         public AutoControl()
         {
-            
+            vm = new AutoControlViewModel(ref MainWindow.model);
 
-            ITelnetServer a = new MyTcpServer();
-            ITelnetClient c = new MyTcpClient();
-            vm = new AutoControlViewModel(new MyModel(a, c));
-            InitializeComponent();
             DataContext = vm;
-            
-
+            InitializeComponent();
         }
-
     }
 }
 

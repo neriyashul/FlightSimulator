@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -18,12 +19,14 @@ namespace FlightSimulator.ViewModels
         private string strCommands = "";
         private ICommand _OKCommand;
         private ICommand _ClearCommand;
-
+        private string ip = ApplicationSettingsModel.Instance.FlightServerIP;
+        private int port = ApplicationSettingsModel.Instance.FlightCommandPort;
+        
 
         private const string defaultColor = "White";
         private const string writingColor = "LightCoral";
         private string backgroundColor = defaultColor;
-        public AutoControlViewModel(IModel imodel) {
+        public AutoControlViewModel(ref IModel imodel) {
             model = imodel;
         }
         public string Commands{
@@ -40,7 +43,11 @@ namespace FlightSimulator.ViewModels
         }
 
         public void SendCommands() {
-            model.sendStrCommand(Commands);
+            if (!model.isClientConnected())
+            {
+                model.connectClient(ip, port);
+            }
+            model.sendStrCommand(strCommands);
         }
 
         public string BackgroundColor {
@@ -61,9 +68,9 @@ namespace FlightSimulator.ViewModels
             }
         }
         private void OkClick() {
+            SendCommands();
             Commands = String.Empty;
             BackgroundColor = defaultColor;
-            //SendCommands();
         }
 
         public ICommand ClearCommand {

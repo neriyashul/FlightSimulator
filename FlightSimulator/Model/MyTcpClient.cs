@@ -14,7 +14,7 @@ namespace FlightSimulator.Model
     public class MyTcpClient : ITelnetClient
     {
         private TcpClient client;
-        private bool stop;
+        private bool stop = false;
 
         public MyTcpClient() {}
 
@@ -34,6 +34,11 @@ namespace FlightSimulator.Model
             }
         }
 
+        public bool isConnected()
+        {
+            return client != null && client.Connected;
+        }
+
         public void read()
         {
             throw new NotImplementedException();
@@ -41,7 +46,11 @@ namespace FlightSimulator.Model
 
         public void write(string command)
         {
-            throw new NotImplementedException();
+                command += "\r\n";
+            // Send data to server
+            BinaryWriter b = new BinaryWriter(client.GetStream());
+            b.Write(command);
+            b.Flush();
         }
         /*
        public void read()

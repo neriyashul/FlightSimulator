@@ -23,6 +23,7 @@ namespace FlightSimulator.Model
             stop = false;
         }
 
+      
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void closeSever()
@@ -31,10 +32,8 @@ namespace FlightSimulator.Model
             client.disconnect();
         }
 
-        public void connectClient(ITelnetClient c)
-        {
-            int port = ApplicationSettingsModel.Instance.FlightCommandPort;
-            client.connect("127.0.0.1", port);
+        public void connectClient(string ip, int port) {
+            client.connect(ip, port);
         }
 
         public void disconnectClient()
@@ -42,31 +41,38 @@ namespace FlightSimulator.Model
             this.client.disconnect();
         }
 
+        public bool isClientConnected()
+        {
+            return client != null && client.isConnected();
+        }
+
         public void openServer(string ip, int port)
         {
             this.server.start();
-        }
-
-
-
-        public void sendStrCommand(string commands)
-        {
-            string[] commandsByline = commands.Split(
-                            new[] { Environment.NewLine },
-                                StringSplitOptions.None);
-
-            new Thread(delegate () {
-                foreach (string command in commandsByline)
-                {
-                    client.write(command);
-                    Thread.Sleep(2000);
-                }
-            }).Start();
         }
 
         public void sendFloatCommand(string strCommand, float command)
         {
             throw new NotImplementedException();
         }
+
+        public void sendStrCommand(string commands)
+        {
+            Task t = new Task(() => {
+                string[] commandsByline = commands.Split(
+                            new[] { Environment.NewLine },
+                                StringSplitOptions.None);
+
+                foreach (string command in commandsByline)
+                {
+                    client.write(command);
+                    Thread.Sleep(2000);
+                }   
+           });
+            t.Start();
+
+            Console.Write("hj");
+        }
+
     }
 }
