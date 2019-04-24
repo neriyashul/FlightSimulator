@@ -22,9 +22,7 @@ namespace FlightSimulator.ViewModels
         {
             if (!model.isClientConnected())
             {
-                string ip = ApplicationSettingsModel.Instance.FlightServerIP;
-                int port = ApplicationSettingsModel.Instance.FlightCommandPort;
-                model.connectClient(ip, port);
+                model.connectClient();
             }
             model.sendStringCommand(command);
         }

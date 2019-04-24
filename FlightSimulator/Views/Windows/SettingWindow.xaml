@@ -19,9 +19,9 @@
                  Height="30" Width="150"/>
 
         <Button Content="OK" Grid.Row="3" Grid.Column="0" Height="40" Width="60" Margin="56,34,55,35"
-                HorizontalAlignment="Center" VerticalAlignment="Center" Click="Ok_Click"/>
+                HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding ClickOkCommand}"/>
         <Button Content="Cancel" Grid.Row="3" Grid.Column="1" Height="40" Width="60" Margin="55,34,23,35"
-                HorizontalAlignment="Center" VerticalAlignment="Center" Click="Cancel_Click"/>
+                HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding CancelCommand}"/>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />

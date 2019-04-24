@@ -12,16 +12,18 @@ namespace FlightSimulator.Model.Interface
         //public event PropertyChangedEventHandler PropertyChanged;
 
         // server
-        void openServer(string ip, int port);
+        void openServer();
         void closeSever();
       
         // clients
-        void connectClient(string ip, int port);
+        void connectClient();
 
         bool isClientConnected();
+        bool isServerOpen();
         void disconnectClient();
         void sendStringCommandsWithSleep(string command, int sleepTime);
         void sendStringCommand(string command);
+ 
 
         // properties
         double Throttle { get; set; }

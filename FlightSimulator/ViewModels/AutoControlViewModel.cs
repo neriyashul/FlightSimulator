@@ -45,7 +45,7 @@ namespace FlightSimulator.ViewModels
         public void SendCommands() {
             if (!model.isClientConnected())
             {
-                model.connectClient(ip, port);
+                model.connectClient();
             }
             model.sendStringCommandsWithSleep(strCommands, 2000);
         }

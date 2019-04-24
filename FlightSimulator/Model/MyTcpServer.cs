@@ -13,30 +13,31 @@ namespace FlightSimulator.Model
 {
     public class MyTcpServer : ITelnetServer
     {
-        private int port;
-        private string ip;
         private TcpListener listener;
         private IClientHandler ch;
+        private bool isOpen = false;
+        private volatile bool stop = false;
         public MyTcpServer(IClientHandler ch)
         {
-            this.port = ApplicationSettingsModel.Instance.FlightInfoPort;
-            this.ip = ApplicationSettingsModel.Instance.FlightServerIP;
             this.ch = ch;
         }
-        public void start()
+        public void Start(string ip, int port)
         {
+
+            stop = false;
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
             listener = new TcpListener(ep);
             listener.Start();
+            isOpen = true;
             Console.WriteLine("Waiting for connections...");
-            listenToCilents();
+            ListenToCilents();
         }
 
-        private void listenToCilents()
+        private void ListenToCilents()
         {
             Thread thread = new Thread(() =>
             {
-                while (true)
+                while (!stop)
                 {
                     try
                     {
@@ -53,10 +54,19 @@ namespace FlightSimulator.Model
             });
             thread.Start();
         }
-        public void stop()
+        public void Stop()
         {
-            listener.Stop();
+            if (listener != null)
+            {
+                isOpen = false;
+                stop = true;
+                listener.Stop();
+            }
         }
 
+        public bool IsOpen()
+        {
+            return listener != null && isOpen == true;
+        }
     }
 }

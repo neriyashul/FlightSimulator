@@ -8,7 +8,9 @@ namespace FlightSimulator.Model.Interface
 {
     public interface ITelnetServer
     {
-        void start();
-        void stop();
+        void Start(string ip, int port);
+        void Stop();
+
+        bool IsOpen();
     }
 }

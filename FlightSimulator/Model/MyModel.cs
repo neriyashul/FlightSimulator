@@ -33,23 +33,30 @@ namespace FlightSimulator.Model
             stop = false;
         }
 
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public void closeSever()
         {
             stop = true;
-            client.disconnect();
+            if (server.IsOpen())
+            {
+                server.Stop();
+            }
         }
 
-        public void connectClient(string ip, int port)
+
+
+        public void connectClient()
         {
+            string ip = ApplicationSettingsModel.Instance.FlightServerIP;
+            int port = ApplicationSettingsModel.Instance.FlightCommandPort;
             client.connect(ip, port);
         }
 
         public void disconnectClient()
         {
-            this.client.disconnect();
+            if (isClientConnected())
+            {
+                client.disconnect();
+            }
         }
 
         public bool isClientConnected()
@@ -57,9 +64,16 @@ namespace FlightSimulator.Model
             return client != null && client.isConnected();
         }
 
-        public void openServer(string ip, int port)
+        public bool isServerOpen()
         {
-            this.server.start();
+            return server != null && server.IsOpen();
+        }
+
+        public void openServer()
+        {
+            string ip = ApplicationSettingsModel.Instance.FlightServerIP;
+            int port = ApplicationSettingsModel.Instance.FlightInfoPort;
+            server.Start(ip, port);
         }
 
         public void sendStringCommand(string command)

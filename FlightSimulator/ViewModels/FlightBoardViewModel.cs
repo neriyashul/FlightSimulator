@@ -66,10 +66,18 @@ namespace FlightSimulator.ViewModels
         }
         private void OnConnectClick()
         {
-            MessageBox.Show("Hello, world!", "My App");
-            //m_flightManager.Connect();
-            //IsDisconnected = false; // Setting that the server is
-            //connected
+            // create new connection from client to server
+            if (model.isClientConnected())
+            {
+                model.disconnectClient();
+            }
+            model.connectClient();
+            // open new server
+            if (model.isServerOpen())
+            {
+                model.closeSever();
+            }
+            model.openServer();
         }
 
 
@@ -87,10 +95,8 @@ namespace FlightSimulator.ViewModels
         }
         private void OnSettingClick()
         {
+            SettingWindow setting = new SettingWindow();
             setting.Show();
-            //m_flightManager.Connect();
-            //IsDisconnected = false; // Setting that the server is
-            //connected
         }
     }
 }

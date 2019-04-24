@@ -24,10 +24,12 @@ namespace FlightSimulator.Views.Windows
         private SettingsViewModel vm;
         public SettingWindow()
         {
-            InitializeComponent();
             vm = new SettingsViewModel();
+            vm.CloseAction = new Action(this.Close);
             this.DataContext = vm;
+            InitializeComponent();
         }
+
 
 
         private void Ok_Click(object sender, RoutedEventArgs e)
