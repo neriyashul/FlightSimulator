@@ -1,4 +1,5 @@
 ﻿using FlightSimulator.Model.Interface;
+using FlightSimulator.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,11 +10,20 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    public class MyModel : IModel
+
+    public class MyModel : BaseNotify, IModel
     {
-        volatile Boolean stop;
-        ITelnetServer server;
-        ITelnetClient client;
+        private volatile bool stop;
+        private ITelnetServer server;
+        private ITelnetClient client;
+        private double aileron;
+        private double elevator;
+        private double throttle;
+        private double rudder;
+        private double latitude;
+        private double longitude;
+     
+
 
 
         public MyModel(ITelnetServer s, ITelnetClient c)
@@ -23,6 +33,7 @@ namespace FlightSimulator.Model
             stop = false;
         }
 
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void closeSever()
@@ -31,10 +42,9 @@ namespace FlightSimulator.Model
             client.disconnect();
         }
 
-        public void connectClient(ITelnetClient c)
+        public void connectClient(string ip, int port)
         {
-            int port = ApplicationSettingsModel.Instance.FlightCommandPort;
-            client.connect("127.0.0.1", port);
+            client.connect(ip, port);
         }
 
         public void disconnectClient()
@@ -42,31 +52,117 @@ namespace FlightSimulator.Model
             this.client.disconnect();
         }
 
+        public bool isClientConnected()
+        {
+            return client != null && client.isConnected();
+        }
+
         public void openServer(string ip, int port)
         {
             this.server.start();
         }
 
-
-
-        public void sendStrCommand(string commands)
+        public void sendStringCommand(string command)
         {
-            string[] commandsByline = commands.Split(
+            client.write(command);
+        }
+
+
+        public void sendStringCommandsWithSleep(string commands, int sleepTime)
+        {
+            Task t = new Task(() =>
+            {
+                string[] commandsByline = commands.Split(
                             new[] { Environment.NewLine },
                                 StringSplitOptions.None);
 
-            new Thread(delegate () {
                 foreach (string command in commandsByline)
                 {
                     client.write(command);
-                    Thread.Sleep(2000);
+                    Thread.Sleep(sleepTime);
                 }
-            }).Start();
+            });
+            t.Start();
+
+            Console.Write("hj");
         }
 
-        public void sendFloatCommand(string strCommand, float command)
+
+        public double Aileron
         {
-            throw new NotImplementedException();
+            get
+            {
+                return aileron;
+            }
+            set
+            {
+                aileron = value;
+                NotifyPropertyChanged("Aileron");
+            }
         }
+        public double Elevator
+        {
+            get
+            {
+                return elevator;
+            }
+            set
+            {
+                elevator = value;
+                NotifyPropertyChanged("Elevator");
+            }
+        }
+
+        public double Throttle
+        {
+            get
+            {
+                return throttle;
+            }
+            set
+            {
+                throttle = value;
+                NotifyPropertyChanged("Throttle");
+            }
+        }
+
+        public double Rudder
+        {
+            get
+            {
+                return rudder;
+            }
+            set
+            {
+                rudder = value;
+                NotifyPropertyChanged("Rudder");
+            }
+        }
+        public double Latitude
+        {
+            get
+            {
+                return latitude;
+            }
+            set
+            {
+                latitude = value;
+                NotifyPropertyChanged("Latitude");
+            }
+        }
+
+        public double Longitude
+        {
+            get
+            {
+                return longitude;
+            }
+            set
+            {
+                longitude = value;
+                NotifyPropertyChanged("Longitude");
+            }
+        }
+         
     }
 }

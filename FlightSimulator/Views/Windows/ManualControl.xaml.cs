@@ -28,30 +28,11 @@ namespace FlightSimulator.Views.Windows
         {
             InitializeComponent();
 
-            ITelnetServer a = new MyTcpServer();
+            ITelnetServer a = new MyTcpServer(new ReadArgumentsClientHandler());
             ITelnetClient c = new MyTcpClient();
             vm = new ManualControlViewModel(new MyModel(a, c));
             DataContext = vm;
         }
 
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            
-        }
-
-        private void Slider_Rudder_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            
-        }
-
-        private void Joystick_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Slider_Throttle_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
     }
 }

@@ -16,9 +16,19 @@ namespace FlightSimulator.Model.Interface
         void closeSever();
       
         // clients
-        void connectClient(ITelnetClient c);
+        void connectClient(string ip, int port);
+
+        bool isClientConnected();
         void disconnectClient();
-        void sendStrCommand(string command);
-        void sendFloatCommand(string strCommand, float command);
+        void sendStringCommandsWithSleep(string command, int sleepTime);
+        void sendStringCommand(string command);
+
+        // properties
+        double Throttle { get; set; }
+        double Rudder { get; set; }
+        double Aileron { get; set; }
+        double Elevator { get; set; }
+        double Longitude { get; set; }
+        double Latitude { get; set; }
     }
 }

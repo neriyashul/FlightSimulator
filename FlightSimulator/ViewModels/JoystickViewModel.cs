@@ -1,5 +1,7 @@
 ﻿using FlightSimulator.Model;
+using FlightSimulator.Model.EventArgs;
 using FlightSimulator.Model.Interface;
+using FlightSimulator.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +10,12 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.ViewModels
 {
-    public class ManualControlViewModel : BaseNotify
+    class JoystickViewModel : BaseNotify
     {
         private IModel model;
-        
-
-        public ManualControlViewModel(IModel imodel)
+        public JoystickViewModel()
         {
-            model = imodel;
+            model = MainWindow.model;
         }
 
         private void sendStringCommand(string command)
@@ -28,32 +28,30 @@ namespace FlightSimulator.ViewModels
             }
             model.sendStringCommand(command);
         }
-        public double Throttle
+        public double Aileron
         {
             get
             {
-                return model.Throttle;
+                return model.Aileron;
             }
-
             set
             {
-                model.Throttle = value;
-                sendStringCommand("set /controls/engines/engine/throttle " + model.Throttle);
-                NotifyPropertyChanged("Throttle");
+                model.Aileron = value;
+                sendStringCommand("set /controls/flight/aileron " + model.Aileron);
+                NotifyPropertyChanged("Aileron");
             }
         }
-        public double Rudder
+        public double Elevator
         {
             get
             {
-                return model.Rudder;
+                return model.Elevator;
             }
-
             set
             {
-                model.Rudder = value;
-                sendStringCommand("set /controls/flight/rudder "+ model.Rudder);
-                NotifyPropertyChanged("Rudder");
+                model.Elevator = value;
+                sendStringCommand("set /controls/flight/elevator " + model.Elevator);
+                NotifyPropertyChanged("Elevator");
             }
         }
     }

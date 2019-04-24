@@ -12,5 +12,7 @@ namespace FlightSimulator.Model.Interface
         void write(string command);
         void read();
         void disconnect();
+
+        bool isConnected();
     }
 }
