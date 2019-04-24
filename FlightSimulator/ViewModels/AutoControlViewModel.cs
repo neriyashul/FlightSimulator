@@ -16,8 +16,8 @@ namespace FlightSimulator.ViewModels
         
         private IModel model;
         private string strCommands = "";
-        private ICommand _OKCommand;
-        private ICommand _ClearCommand;
+        private System.Windows.Input.ICommand _OKCommand;
+        private System.Windows.Input.ICommand _ClearCommand;
 
 
         private const string defaultColor = "White";

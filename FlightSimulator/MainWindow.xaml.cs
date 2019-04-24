@@ -32,5 +32,10 @@ namespace FlightSimulator
             vm = new AutoControlViewModel(new MyModel(a, c));
             DataContext = vm;
         }
+
+        private void FlightBoard_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

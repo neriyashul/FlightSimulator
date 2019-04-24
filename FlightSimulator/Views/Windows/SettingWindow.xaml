@@ -8,18 +8,20 @@
         Title="Settings" Height="250" Width="350">
     <Grid>
         <Label Content="Flight Info Port:" Grid.Row="0" Grid.Column="0"/>
-        <TextBox Text="text" Grid.Row="0" Grid.Column="1" Height="30" Width="150" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding FlightInfoPort}" Grid.Row="0" Grid.Column="1" Height="30" Width="150" Grid.ColumnSpan="2"/>
 
         <Label Content="Flight Server IP:" Grid.Row="1" Grid.Column="0" />
-        <TextBox Text="TextBox" TextChanged="TextBox_TextChanged" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+        <TextBox Text="{Binding FlightServerIP}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                  Height="30" Width="150"/>
 
         <Label Content="Flight Command Port:" Grid.Row="2" Grid.Column="0"/>
-        <TextBox Text="TextBox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+        <TextBox Text="{Binding FlightCommandPort}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                  Height="30" Width="150"/>
 
-        <Button Content="OK" Grid.Row="3" Grid.Column="0" Height="40" Width="60" Margin="56,34,55,35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Content="Cancel" Grid.Row="3" Grid.Column="1" Height="40" Width="60" Margin="55,34,23,35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Content="OK" Grid.Row="3" Grid.Column="0" Height="40" Width="60" Margin="56,34,55,35"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Click="Ok_Click"/>
+        <Button Content="Cancel" Grid.Row="3" Grid.Column="1" Height="40" Width="60" Margin="55,34,23,35"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Click="Cancel_Click"/>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -33,5 +35,16 @@
             <ColumnDefinition Width="46*" />
             <ColumnDefinition Width="11*"/>
         </Grid.ColumnDefinitions>
+        
+        <Grid.Resources>
+<Style TargetType="TextBlock">
+<Setter Property="Padding" Value="3"/>
+<Setter Property="Margin" Value="3"/>
+</Style>
+<Style TargetType="TextBox">
+<Setter Property="Padding" Value="3"/>
+<Setter Property="Margin" Value="3"/>
+</Style>
+</Grid.Resources>
     </Grid>
 </Window>

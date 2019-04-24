@@ -9,7 +9,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="550.333" Width="800">
         <Grid>
+        
+        
+        <View:FlightBoard HorizontalAlignment="Left" Grid.Row="1"  Margin="149,45,0,0" VerticalAlignment="Top" Loaded="FlightBoard_Loaded"/>
 
-        <Windows:AutoControl></Windows:AutoControl>
+
     </Grid>
 </Window>

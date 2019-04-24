@@ -9,6 +9,7 @@ namespace FlightSimulator.Model
 {
     public class ApplicationSettingsModel : ISettingsModel
     {
+        
         #region Singleton
         private static ISettingsModel m_Instance = null;
         public static ISettingsModel Instance

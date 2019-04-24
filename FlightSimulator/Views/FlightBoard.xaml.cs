@@ -29,6 +29,9 @@ namespace FlightSimulator.Views
         public FlightBoard()
         {
             InitializeComponent();
+
+            FlightBoardViewModel fbvm = new FlightBoardViewModel();
+            DataContext = fbvm;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -49,10 +52,7 @@ namespace FlightSimulator.Views
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
     }
 
 }

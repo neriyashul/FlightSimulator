@@ -63,7 +63,7 @@ namespace FlightSimulator.ViewModels.Windows
 
         #region Commands
         #region ClickCommand
-        private ICommand _clickCommand;
+        private System.Windows.Input.ICommand _clickCommand;
         public ICommand ClickCommand
         {
             get
@@ -78,7 +78,7 @@ namespace FlightSimulator.ViewModels.Windows
         #endregion
 
         #region CancelCommand
-        private ICommand _cancelCommand;
+        private System.Windows.Input.ICommand _cancelCommand;
         public ICommand CancelCommand
         {
             get
