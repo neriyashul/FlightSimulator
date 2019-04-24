@@ -10,6 +10,6 @@
         Title="MainWindow" Height="550.333" Width="800">
         <Grid>
 
-        <Windows:AutoControl></Windows:AutoControl>
+        <View:FlightBoard Margin="-1,72,1.333,-72.333"></View:FlightBoard>
     </Grid>
 </Window>

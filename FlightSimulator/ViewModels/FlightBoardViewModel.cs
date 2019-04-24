@@ -12,11 +12,11 @@ using System.Windows;
 
 namespace FlightSimulator.ViewModels
 {
+     public class FlightBoardViewModel : BaseNotify
+        {
+        private IModel model;
 
-    public class FlightBoardViewModel : BaseNotify
-    {
-
-        FlightBoardViewModel(IModel m)
+        public FlightBoardViewModel(IModel m)
         {
             model = m;
             model.PropertyChanged +=
@@ -36,7 +36,7 @@ namespace FlightSimulator.ViewModels
             {
                 model.Longitude = value;
                 NotifyPropertyChanged("Longitude");
-            }              
+            }
         }
 
         public double Latitude
@@ -51,7 +51,6 @@ namespace FlightSimulator.ViewModels
                 NotifyPropertyChanged("Latitude");
             }
         }
-
 
 
 
