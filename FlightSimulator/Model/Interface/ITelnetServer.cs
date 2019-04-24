@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model.Interface
 {
-    interface ITelnetServer
+    public interface ITelnetServer
     {
         void start();
         void stop();

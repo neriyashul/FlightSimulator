@@ -1,5 +1,9 @@
-﻿using System;
+﻿using FlightSimulator.Model;
+using FlightSimulator.Model.Interface;
+using FlightSimulator.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +21,16 @@ namespace FlightSimulator
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        private SolidColorBrush TextBoxColor = Brushes.White;
-        //private ViewModels vm;
+    public partial class MainWindow : Window {
+        private AutoControlViewModel vm;
         public MainWindow()
         {
             InitializeComponent();
-        }
 
+            ITelnetServer a = new MyTcpServer();
+            ITelnetClient c = new MyTcpClient();
+            vm = new AutoControlViewModel(new MyModel(a, c));
+            DataContext = vm;
+        }
     }
 }

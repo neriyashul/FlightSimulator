@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    class MyTcpClient : ITelnetClient
+    public class MyTcpClient : ITelnetClient
     {
         private TcpClient client;
         private bool stop;
@@ -36,19 +36,30 @@ namespace FlightSimulator.Model
 
         public void read()
         {
+            throw new NotImplementedException();
         }
 
         public void write(string command)
         {
-            using (NetworkStream stream = client.GetStream())
-            using (BinaryReader reader = new BinaryReader(stream))
-            using (BinaryWriter writer = new BinaryWriter(stream))
-            {
-                writer.Write(command);
-                // Get result from server
-                int result = reader.ReadInt32();
-                Console.WriteLine(result);
-            }
+            throw new NotImplementedException();
         }
+        /*
+       public void read()
+       {
+       }
+
+       public void write(string command)
+       {
+           using (NetworkStream stream = client.GetStream())
+           using (BinaryReader reader = new BinaryReader(stream))
+           using (BinaryWriter writer = new BinaryWriter(stream))
+           {
+               writer.Write(command);
+               // Get result from server
+               int result = reader.ReadInt32();
+               Console.WriteLine(result);
+           }
+       }
+       */
     }
 }

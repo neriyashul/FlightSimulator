@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    class MyModel : IModel
+    public class MyModel : IModel
     {
         volatile Boolean stop;
-        private ITelnetServer server;
-        private ITelnetClient client;
+        ITelnetServer server;
+        ITelnetClient client;
 
 
-        public MyModel(ITelnetServer server, ITelnetClient client)
+        public MyModel(ITelnetServer s, ITelnetClient c)
         {
-            this.server = server;
+            server = s;
+            client = c;
             stop = false;
         }
 
@@ -48,9 +49,24 @@ namespace FlightSimulator.Model
 
 
 
-        public void start()
-        {   
+        public void sendStrCommand(string commands)
+        {
+            string[] commandsByline = commands.Split(
+                            new[] { Environment.NewLine },
+                                StringSplitOptions.None);
 
+            new Thread(delegate () {
+                foreach (string command in commandsByline)
+                {
+                    client.write(command);
+                    Thread.Sleep(2000);
+                }
+            }).Start();
+        }
+
+        public void sendFloatCommand(string strCommand, float command)
+        {
+            throw new NotImplementedException();
         }
     }
 }

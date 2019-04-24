@@ -10,11 +10,11 @@
 
     <Grid>
 
-        <TextBox x:Name="textBox" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="220" AcceptsReturn="True" KeyDown="OnKeyDownHandler" Text=""/>
+        <TextBox x:Name="textBox"  VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="220" AcceptsReturn="True" Background="{Binding BackgroundColor}" Text="{Binding Commands,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
-        <Button x:Name="OKButton" VerticalAlignment="Top" HorizontalAlignment="Center" Content="OK" Click="OKButton_Click"
-            Width="63" Height="30" Margin="0,225,100,0" FontSize="16" FontWeight="Bold" />
-        <Button x:Name="ClearButton" Content="Clear" Click="ClearButton_Click"
+        <Button x:Name="OKButton" VerticalAlignment="Top" HorizontalAlignment="Center" Content="OK" Command="{Binding OkCommand}"
+        Width="63" Height="30" Margin="0,225,100,0" FontSize="16" FontWeight="Bold" />
+        <Button x:Name="ClearButton" Content="Clear" Command="{Binding ClearCommand}"
                   VerticalAlignment="Top" Margin="100,225,0,0" HorizontalAlignment="Center" Width="63" Height="30" FontWeight="Bold" FontSize="16"  />
     </Grid>
 
