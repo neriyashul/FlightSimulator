@@ -22,5 +22,13 @@ namespace FlightSimulator.Model.Interface
         void disconnectClient();
         void sendStringCommandsWithSleep(string command, int sleepTime);
         void sendStringCommand(string command);
+
+        // properties
+        double Throttle { get; set; }
+        double Rudder { get; set; }
+        double Aileron { get; set; }
+        double Elevator { get; set; }
+        double Longitude { get; set; }
+        double Latitude { get; set; }
     }
 }

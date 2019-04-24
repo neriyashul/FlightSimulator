@@ -28,7 +28,7 @@ namespace FlightSimulator
         public static IModel model;
         public MainWindow()
         {
-            ITelnetServer s = new MyTcpServer();
+            ITelnetServer s = new MyTcpServer(new ReadArgumentsClientHandler());
             ITelnetClient c = new MyTcpClient();
             model = new MyModel(s, c);
             vm = new ManualControlViewModel(model);

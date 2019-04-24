@@ -11,8 +11,6 @@ namespace FlightSimulator.ViewModels
     public class ManualControlViewModel : BaseNotify
     {
         private IModel model;
-        private float throttle;
-        private float rudder;
         
 
         public ManualControlViewModel(IModel imodel)
@@ -30,33 +28,32 @@ namespace FlightSimulator.ViewModels
             }
             model.sendStringCommand(command);
         }
-        public float Throttle
+        public double Throttle
         {
             get
             {
-                return throttle;
+                return model.Throttle;
             }
 
             set
             {
-                throttle = value;
-                sendStringCommand("set /controls/engines/engine/throttle " + throttle);
+                model.Throttle = value;
+                sendStringCommand("set /controls/engines/engine/throttle " + model.Throttle);
                 NotifyPropertyChanged("Throttle");
             }
         }
-        public float Rudder
+        public double Rudder
         {
             get
             {
-                return rudder;
+                return model.Rudder;
             }
 
             set
             {
-                rudder = value;
-                sendStringCommand("set /controls/flight/rudder "+ rudder);
+                model.Rudder = value;
+                sendStringCommand("set /controls/flight/rudder "+ model.Rudder);
                 NotifyPropertyChanged("Rudder");
-
             }
         }
     }

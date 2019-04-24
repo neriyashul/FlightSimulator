@@ -14,7 +14,6 @@ namespace FlightSimulator.Model
     public class MyTcpClient : ITelnetClient
     {
         private TcpClient client;
-        private bool stop = false;
 
         public MyTcpClient() {}
 
@@ -22,7 +21,16 @@ namespace FlightSimulator.Model
         {
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
             client = new TcpClient();
-            client.Connect(ep);
+
+            while (!isConnected())
+            {
+                try
+                {
+                    client.Connect(ep);
+                }
+                catch (Exception e) { }
+            }
+
             Console.WriteLine("You are connected");
         }
 
@@ -46,29 +54,11 @@ namespace FlightSimulator.Model
 
         public void write(string command)
         {
-                command += "\r\n";
+            command += Environment.NewLine; 
             // Send data to server
             BinaryWriter b = new BinaryWriter(client.GetStream());
             b.Write(command);
             b.Flush();
         }
-        /*
-       public void read()
-       {
-       }
-
-       public void write(string command)
-       {
-           using (NetworkStream stream = client.GetStream())
-           using (BinaryReader reader = new BinaryReader(stream))
-           using (BinaryWriter writer = new BinaryWriter(stream))
-           {
-               writer.Write(command);
-               // Get result from server
-               int result = reader.ReadInt32();
-               Console.WriteLine(result);
-           }
-       }
-       */
     }
 }

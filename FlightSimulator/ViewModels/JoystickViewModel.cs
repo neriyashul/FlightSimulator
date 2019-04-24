@@ -12,9 +12,7 @@ namespace FlightSimulator.ViewModels
 {
     class JoystickViewModel : BaseNotify
     {
-        float aileron;
-        float elevator;
-        IModel model;
+        private IModel model;
         public JoystickViewModel()
         {
             model = MainWindow.model;
@@ -30,34 +28,31 @@ namespace FlightSimulator.ViewModels
             }
             model.sendStringCommand(command);
         }
-        public float Aileron
+        public double Aileron
         {
             get
             {
-                return aileron;
+                return model.Aileron;
             }
             set
             {
-                aileron = value;
-                sendStringCommand("set /controls/flight/aileron " + aileron);
+                model.Aileron = value;
+                sendStringCommand("set /controls/flight/aileron " + model.Aileron);
                 NotifyPropertyChanged("Aileron");
             }
         }
-        public float Elevator
+        public double Elevator
         {
             get
             {
-                return elevator;
+                return model.Elevator;
             }
             set
             {
-                elevator = value;
-                sendStringCommand("set /controls/flight/elevator " + elevator);
+                model.Elevator = value;
+                sendStringCommand("set /controls/flight/elevator " + model.Elevator);
                 NotifyPropertyChanged("Elevator");
-
             }
         }
-
-
     }
 }

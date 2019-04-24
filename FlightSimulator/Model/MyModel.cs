@@ -1,4 +1,5 @@
 ﻿using FlightSimulator.Model.Interface;
+using FlightSimulator.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,11 +10,20 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    public class MyModel : IModel
+
+    public class MyModel : BaseNotify, IModel
     {
-        volatile Boolean stop;
-        ITelnetServer server;
-        ITelnetClient client;
+        private volatile bool stop;
+        private ITelnetServer server;
+        private ITelnetClient client;
+        private double aileron;
+        private double elevator;
+        private double throttle;
+        private double rudder;
+        private double latitude;
+        private double longitude;
+     
+
 
 
         public MyModel(ITelnetServer s, ITelnetClient c)
@@ -23,7 +33,7 @@ namespace FlightSimulator.Model
             stop = false;
         }
 
-      
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void closeSever()
@@ -32,7 +42,8 @@ namespace FlightSimulator.Model
             client.disconnect();
         }
 
-        public void connectClient(string ip, int port) {
+        public void connectClient(string ip, int port)
+        {
             client.connect(ip, port);
         }
 
@@ -59,7 +70,8 @@ namespace FlightSimulator.Model
 
         public void sendStringCommandsWithSleep(string commands, int sleepTime)
         {
-            Task t = new Task(() => {
+            Task t = new Task(() =>
+            {
                 string[] commandsByline = commands.Split(
                             new[] { Environment.NewLine },
                                 StringSplitOptions.None);
@@ -68,12 +80,89 @@ namespace FlightSimulator.Model
                 {
                     client.write(command);
                     Thread.Sleep(sleepTime);
-                }   
-           });
+                }
+            });
             t.Start();
 
             Console.Write("hj");
         }
 
+
+        public double Aileron
+        {
+            get
+            {
+                return aileron;
+            }
+            set
+            {
+                aileron = value;
+                NotifyPropertyChanged("Aileron");
+            }
+        }
+        public double Elevator
+        {
+            get
+            {
+                return elevator;
+            }
+            set
+            {
+                elevator = value;
+                NotifyPropertyChanged("Elevator");
+            }
+        }
+
+        public double Throttle
+        {
+            get
+            {
+                return throttle;
+            }
+            set
+            {
+                throttle = value;
+                NotifyPropertyChanged("Throttle");
+            }
+        }
+
+        public double Rudder
+        {
+            get
+            {
+                return rudder;
+            }
+            set
+            {
+                rudder = value;
+                NotifyPropertyChanged("Rudder");
+            }
+        }
+        public double Latitude
+        {
+            get
+            {
+                return latitude;
+            }
+            set
+            {
+                latitude = value;
+                NotifyPropertyChanged("Latitude");
+            }
+        }
+
+        public double Longitude
+        {
+            get
+            {
+                return longitude;
+            }
+            set
+            {
+                longitude = value;
+                NotifyPropertyChanged("Longitude");
+            }
+        }
+         
     }
 }
