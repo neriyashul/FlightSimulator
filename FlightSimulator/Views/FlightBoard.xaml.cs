@@ -27,14 +27,12 @@ namespace FlightSimulator.Views
     {
         ObservableDataSource<Point> planeLocations = null;
 
-        FlightBoardViewModel vm;
+        private FlightBoardViewModel vm = new FlightBoardViewModel(MainWindow.model);
         public FlightBoard()
         {
-            InitializeComponent();
-
-            vm = new FlightBoardViewModel(MainWindow.model);
             vm.PropertyChanged += Vm_PropertyChanged;
             DataContext = vm;
+            InitializeComponent();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

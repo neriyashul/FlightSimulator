@@ -8,8 +8,12 @@
         xmlns:Windows="clr-namespace:FlightSimulator.Views.Windows" x:Class="FlightSimulator.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="550.333" Width="800">
-        <Grid>
-
-        <View:FlightBoard Margin="-1,72,1.333,-72.333"></View:FlightBoard>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Windows:ManualControl HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Center"/>
+        
     </Grid>
 </Window>
