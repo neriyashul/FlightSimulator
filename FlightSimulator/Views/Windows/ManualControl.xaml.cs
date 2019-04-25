@@ -27,10 +27,7 @@ namespace FlightSimulator.Views.Windows
         public ManualControl()
         {
             InitializeComponent();
-
-            ITelnetServer a = new MyTcpServer(new ReadArgumentsClientHandler());
-            ITelnetClient c = new MyTcpClient();
-            vm = new ManualControlViewModel(new MyModel(a, c));
+            vm = new ManualControlViewModel(MainWindow.model);
             DataContext = vm;
         }
 

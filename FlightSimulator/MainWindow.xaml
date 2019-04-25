@@ -14,6 +14,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Windows:ManualControl HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Center"/>
-        
+        <View:FlightBoard Grid.Column="0"></View:FlightBoard>
     </Grid>
 </Window>
