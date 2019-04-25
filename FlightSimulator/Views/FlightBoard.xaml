@@ -31,8 +31,8 @@
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">Lat</TextBlock>
 
         <!--Buttons-->
-        <Button  Content="Connect" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="21" Width="74" Command="{Binding ConnectCommand}"/>
-        <Button Content="Settings" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  Width="74" Height="21" Command="{Binding SettingCommand}" />
+        <Button  Content="Connect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="21" Width="74" Command="{Binding ConnectCommand}" Margin="168,62,484,332"/>
+        <Button Content="Settings" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  Width="74" Height="21" Command="{Binding SettingCommand}" Margin="512,59,140,335" />
 
     </Grid>
 </UserControl>
