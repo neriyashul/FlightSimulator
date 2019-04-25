@@ -66,23 +66,40 @@ namespace FlightSimulator.ViewModels
         }
         private void OnConnectClick()
         {
+            // close current server and client (if exist)
+            OnDisconnectClick();
+
             // open new server
             if (model.isServerOpen())
-            {
-                model.closeSever();
-            }
             model.openServer();
 
             // create new connection from client to server
-            if (model.isClientConnected())
-            {
-                model.disconnectClient();
-            }
             model.connectClient();
         }
 
 
-
+        private ICommand _disconnectCommand;
+        public ICommand DisonnectCommand
+        {
+            get
+            {
+                return _disconnectCommand ?? (_disconnectCommand =
+                new CommandHandler(() => OnDisconnectClick()));
+            }
+        }
+        private void OnDisconnectClick()
+        {
+            // close server
+            if (model.isServerOpen())
+            {
+                model.closeSever();
+            }
+            // disconnect client
+            if (model.isClientConnected())
+            {
+                model.disconnectClient();
+            }
+        }
 
         //property setting
         private ICommand _settingCommand;
