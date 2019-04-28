@@ -3,37 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:flightBoardUC="clr-namespace:FlightSimulator.Views"
+        xmlns:local="clr-namespace:FlightSimulator"
+        xmlns:View="clr-namespace:FlightSimulator.Views"
+        xmlns:Windows="clr-namespace:FlightSimulator.Views.Windows" x:Class="FlightSimulator.MainWindow"
         mc:Ignorable="d"
-        Title="Flight Simulator" Height="450" Width="800">
-    <Grid>
-        <Grid.Resources>
-            <Style TargetType="TextBlock" x:Key="LabelStyle">
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="HorizontalAlignment" Value="Center" />
-                <Setter Property="FontWeight" Value="Bold" />
-                <Setter Property="Foreground" Value="Black" />
-                <Setter Property="Margin" Value="4" />
-            </Style>
-            <RotateTransform x:Key="rotate" Angle="90"/>
-        </Grid.Resources>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <flightBoardUC:FlightBoard Grid.Column="0" Grid.ColumnSpan="2" Margin="20,2,376,-2">
-            
-        </flightBoardUC:FlightBoard>
-            
+        Title="MainWindow" Height="550.333" Width="800">
 
-            <!--<Windows:ManualControl HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Center"/>-->
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
 
 
-        <TabControl Name="pilot" Grid.Column="1">
-            <TabItem Header="Manual"/>
-            <TabItem Header="Auto Pilot" />
-        </TabControl>
+    <TabControl Name="pilot" Grid.Column="1">
+      <TabItem Header="Manual"/>
+      <TabItem Header="Auto Pilot">
+        <Windows:AutoControl></Windows:AutoControl>
+      </TabItem>
+    </TabControl>
 
 
-        </Grid>
+  </Grid>
+
 </Window>
