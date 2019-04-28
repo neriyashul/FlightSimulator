@@ -15,7 +15,7 @@ namespace FlightSimulator.ViewModels
      public class FlightBoardViewModel : BaseNotify
         {
         private IModel model;
-
+        
         public FlightBoardViewModel(IModel m)
         {
             model = m;
@@ -70,7 +70,6 @@ namespace FlightSimulator.ViewModels
             OnDisconnectClick();
 
             // open new server
-            if (model.isServerOpen())
             model.openServer();
 
             // create new connection from client to server
@@ -79,7 +78,7 @@ namespace FlightSimulator.ViewModels
 
 
         private ICommand _disconnectCommand;
-        public ICommand DisonnectCommand
+        public ICommand DisconnectCommand
         {
             get
             {

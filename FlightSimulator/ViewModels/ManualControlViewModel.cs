@@ -20,11 +20,10 @@ namespace FlightSimulator.ViewModels
 
         private void sendStringCommand(string command)
         {
-            if (!model.isClientConnected())
+            if (model.isClientConnected())
             {
-                model.connectClient();
+                model.sendStringCommand(command);
             }
-            model.sendStringCommand(command);
         }
         public double Throttle
         {
@@ -36,7 +35,7 @@ namespace FlightSimulator.ViewModels
             set
             {
                 model.Throttle = value;
-                sendStringCommand("set /controls/engines/engine/throttle " + model.Throttle);
+                sendStringCommand("set controls/engines/engine/throttle " + model.Throttle);
                 NotifyPropertyChanged("Throttle");
             }
         }
@@ -50,7 +49,7 @@ namespace FlightSimulator.ViewModels
             set
             {
                 model.Rudder = value;
-                sendStringCommand("set /controls/flight/rudder "+ model.Rudder);
+                sendStringCommand("set controls/flight/rudder "+ model.Rudder);
                 NotifyPropertyChanged("Rudder");
             }
         }

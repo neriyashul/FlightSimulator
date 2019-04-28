@@ -75,7 +75,6 @@
     <Compile Include="Model\MyModel.cs" />
     <Compile Include="Model\MyTcpClient.cs" />
     <Compile Include="Model\MyTcpServer.cs" />
-    <Compile Include="Model\ReadArgumentsClientHandler.cs" />
     <Compile Include="ViewModels\AutoControlViewModel.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />

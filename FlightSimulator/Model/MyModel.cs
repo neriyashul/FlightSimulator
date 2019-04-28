@@ -25,13 +25,29 @@ namespace FlightSimulator.Model
      
 
 
+    #region Singleton
+        private static IModel m_Instance = null;
 
-        public MyModel(ITelnetServer s, ITelnetClient c)
+        private MyModel()
         {
-            server = s;
-            client = c;
+            server = new MyTcpServer();
+            client = new MyTcpClient();
             stop = false;
         }
+
+       public static IModel Instance
+        {
+            get
+            {
+                if (m_Instance == null)
+                {
+                    m_Instance = new MyModel();
+                }
+                return m_Instance;
+            }
+        }
+        #endregion
+
 
         public void closeSever()
         {

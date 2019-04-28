@@ -21,16 +21,20 @@ namespace FlightSimulator.Model
         {
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
             client = new TcpClient();
-
-            while (!isConnected())
+            Thread thread = new Thread(() =>
             {
-                try
+                bool stop = false;
+                while (!stop)
                 {
-                    client.Connect(ep);
+                    try
+                    {
+                        client.Connect(ep);
+                        stop = true;
+                    }
+                    catch (Exception e) { }
                 }
-                catch (Exception e) { }
-            }
-
+            });
+            thread.Start();
             Console.WriteLine("You are connected");
         }
 
@@ -54,7 +58,8 @@ namespace FlightSimulator.Model
 
         public void write(string command)
         {
-            command += Environment.NewLine; 
+            // add '/r/n'
+            command += Environment.NewLine;
             // Send data to server
             BinaryWriter b = new BinaryWriter(client.GetStream());
             b.Write(command);

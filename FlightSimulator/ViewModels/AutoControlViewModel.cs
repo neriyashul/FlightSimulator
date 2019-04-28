@@ -26,7 +26,7 @@ namespace FlightSimulator.ViewModels
         private const string defaultColor = "White";
         private const string writingColor = "LightCoral";
         private string backgroundColor = defaultColor;
-        public AutoControlViewModel(ref IModel imodel) {
+        public AutoControlViewModel(IModel imodel) {
             model = imodel;
         }
         public string Commands{
@@ -43,11 +43,10 @@ namespace FlightSimulator.ViewModels
         }
 
         public void SendCommands() {
-            if (!model.isClientConnected())
+            if (model.isClientConnected())
             {
-                model.connectClient();
+                model.sendStringCommandsWithSleep(strCommands, 2000);
             }
-            model.sendStringCommandsWithSleep(strCommands, 2000);
         }
 
         public string BackgroundColor {
