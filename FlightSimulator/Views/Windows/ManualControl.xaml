@@ -29,7 +29,9 @@
 
         <Slider x:Name="rudderSlider" Style="{StaticResource mySliderStyle}" Margin="0,-15"  VerticalAlignment="Bottom" Value="{Binding Rudder, Mode=TwoWay}"/>
 
-        <View:Joystick x:Name="joystick" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Viewbox VerticalAlignment="Center" HorizontalAlignment="Center" Height="316" Margin="217,55,217,79">
+            <View:Joystick x:Name="joystick" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Viewbox>
 
         <Label Content=" ← rudder →" VerticalAlignment="Bottom"  Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
 
