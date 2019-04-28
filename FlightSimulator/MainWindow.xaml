@@ -19,7 +19,7 @@
 
         </View:FlightBoard>
       
-        <TabControl Name="pilot" Grid.Column="1">
+        <TabControl Name="pilot" Grid.Column="1" VerticalAlignment="Center" Height="400" Margin="0.333,98,0.333,5.667">
         
         <TabItem Header="Manual">
             <Windows:ManualControl></Windows:ManualControl>

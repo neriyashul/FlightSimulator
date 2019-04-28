@@ -29,7 +29,7 @@
 
         <Slider x:Name="rudderSlider" Style="{StaticResource mySliderStyle}" Margin="0,-15"  VerticalAlignment="Bottom" Value="{Binding Rudder, Mode=TwoWay}"/>
 
-        <Viewbox Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" Height="331" Margin="75,75,75,75">
+        <Viewbox Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="75,60,75,75">
             <View:Joystick></View:Joystick>
         </Viewbox>
 
