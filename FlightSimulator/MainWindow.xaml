@@ -15,7 +15,11 @@
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
 
-        <TabControl Name="pilot" Grid.Column="1">
+        <View:FlightBoard Grid.Column="0">
+
+        </View:FlightBoard>
+      
+        <TabControl Name="pilot" Grid.Column="1" VerticalAlignment="Center" Height="400" Margin="0.333,98,0.333,5.667">
         
         <TabItem Header="Manual">
             <Windows:ManualControl></Windows:ManualControl>
@@ -26,7 +30,7 @@
       </TabItem>
     </TabControl>
 
-
+      
   </Grid>
 
 </Window>
