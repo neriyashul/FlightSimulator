@@ -8,12 +8,19 @@
         xmlns:Windows="clr-namespace:FlightSimulator.Views.Windows" x:Class="FlightSimulator.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="550.333" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Windows:ManualControl HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Center"/>
-        <View:FlightBoard Grid.Column="0"></View:FlightBoard>
-    </Grid>
+    <WrapPanel>
+        
+        <!--<Windows:ManualControl HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Center"/>-->        
+
+        <TabControl Name="tcSample">
+            <TabItem Header="General">
+                <Label Content="Content goes here..." />
+            </TabItem>
+            <TabItem Header="Security" />
+            <TabItem Header="Details" />
+        </TabControl>
+
+        <View:FlightBoard />
+
+    </WrapPanel>
 </Window>

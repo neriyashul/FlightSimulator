@@ -46,7 +46,6 @@ namespace FlightSimulator.Views.Windows
             MainWindow win = (MainWindow)Application.Current.MainWindow;
             win.Show();
             this.Close();
-            MessageBox.Show("Button was clicked");
         }
 
        
