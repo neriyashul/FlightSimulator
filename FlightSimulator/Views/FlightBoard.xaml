@@ -7,38 +7,36 @@
              xmlns:local="clr-namespace:FlightSimulator.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
-
-    <Viewbox>
-        <Grid>
-            <Grid.Resources>
-                <Style TargetType="TextBlock" x:Key="LabelStyle">
-                    <Setter Property="FontSize" Value="20" />
-                    <Setter Property="HorizontalAlignment" Value="Center" />
-                    <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="Foreground" Value="Black" />
-                    <Setter Property="Margin" Value="4" />
-                </Style>
-                <RotateTransform x:Key="rotate" Angle="90"/>
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource LabelStyle}" LayoutTransform="{StaticResource rotate}" VerticalAlignment="Center">Lon</TextBlock>
-            <d3:ChartPlotter Grid.Row="0" LegendVisible="False" Name="plotter" Margin="11.333,86,18,18.333" Grid.Column="1"/>
-            <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">Lat</TextBlock>
-
-            <!--Buttons-->
-            <Button  Content="Disonnect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="21" Width="74" Command="{Binding DisconnectCommand}" Margin="168,62,484,332"/>
-            <Button  Content="Connect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="21" Width="74" Command="{Binding ConnectCommand}" Margin="357,62,336,332"/>
-            <Button Content="Settings" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  Width="74" Height="21" Command="{Binding SettingCommand}" Margin="512,59,140,335" />
-
-        </Grid>
-    </Viewbox>
     
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock" x:Key="LabelStyle">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="Margin" Value="4" />
+            </Style>
+            <RotateTransform x:Key="rotate" Angle="90"/>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource LabelStyle}" LayoutTransform="{StaticResource rotate}" VerticalAlignment="Center">Lon</TextBlock>
+        <d3:ChartPlotter Grid.Row="0" LegendVisible="False" Name="plotter" Margin="11.333,86,18,18.333" Grid.Column="1"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">Lat</TextBlock>
+
+        <!--Buttons-->
+        <Button  Content="Disonnect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="21" Width="74" Command="{Binding DisconnectCommand}" Margin="168,62,484,332"/>
+        <Button  Content="Connect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="21" Width="74" Command="{Binding ConnectCommand}" Margin="357,62,336,332"/>
+        <Button Content="Settings" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  Width="74" Height="21" Command="{Binding SettingCommand}" Margin="512,59,140,335" />
+
+    </Grid>
 </UserControl>
        
