@@ -15,12 +15,16 @@
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
 
+        <View:FlightBoard Grid.Column="0">
 
-    <TabControl Name="pilot" Grid.Column="1" VerticalAlignment="Center">
+        </View:FlightBoard>
+      
+        <TabControl Name="pilot" Grid.Column="1">
         
         <TabItem Header="Manual">
             <Windows:ManualControl></Windows:ManualControl>
         </TabItem>
+            
       <TabItem Header="Auto Pilot">
             <Windows:AutoControl ></Windows:AutoControl>
       </TabItem>
