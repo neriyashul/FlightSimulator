@@ -15,6 +15,9 @@
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
 
+        <View:FlightBoard Grid.Column="0">
+            
+        </View:FlightBoard>
 
     <TabControl Name="pilot" Grid.Column="1" VerticalAlignment="Center">
         
