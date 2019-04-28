@@ -17,11 +17,12 @@
 
 
     <TabControl Name="pilot" Grid.Column="1" VerticalAlignment="Center">
-            <TabItem Header="Manual">
-                <Windows:ManualControl></Windows:ManualControl>
-            </TabItem>
+        
+        <TabItem Header="Manual">
+            <Windows:ManualControl></Windows:ManualControl>
+        </TabItem>
       <TabItem Header="Auto Pilot">
-        <Windows:AutoControl ></Windows:AutoControl>
+            <Windows:AutoControl ></Windows:AutoControl>
       </TabItem>
     </TabControl>
 
