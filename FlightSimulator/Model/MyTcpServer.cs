@@ -1,4 +1,5 @@
 ﻿using FlightSimulator.Model.Interface;
+using FlightSimulator.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,16 +15,14 @@ namespace FlightSimulator.Model
     public class MyTcpServer : ITelnetServer
     {
         private TcpListener listener;
-        private IClientHandler ch;
         private bool isOpen = false;
         private volatile bool stop = false;
-        public MyTcpServer(IClientHandler ch)
+
+        public MyTcpServer() 
         {
-            this.ch = ch;
         }
         public void Start(string ip, int port)
         {
-
             stop = false;
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
             listener = new TcpListener(ep);
@@ -33,24 +32,38 @@ namespace FlightSimulator.Model
             ListenToCilents();
         }
 
+        private void updateValues(string[] values, IModel model)
+        {
+            try
+            {
+                model.Longitude = Convert.ToDouble(values[0]);
+                model.Latitude = Convert.ToDouble(values[1]);
+            }
+            catch (Exception e) { }
+        }
+
+        void readFromClient(TcpClient client)
+        {
+            IModel model = MyModel.Instance;
+            BinaryReader reader = new BinaryReader(client.GetStream());
+            while (!stop)
+            {
+                string str = reader.ReadString();
+
+                string[] vals = str.Split(
+                            new[] { ',' },
+                                StringSplitOptions.None);
+                updateValues(vals, model);
+                Thread.Sleep(200);
+            }
+        }
+
         private void ListenToCilents()
         {
             Thread thread = new Thread(() =>
             {
-                while (!stop)
-                {
-                    try
-                    {
-                        TcpClient client = listener.AcceptTcpClient();
-                        Console.WriteLine("Got new connection");
-                        ch.HandleClient(client);
-                    }
-                    catch (SocketException)
-                    {
-                        break;
-                    }
-                }
-                Console.WriteLine("Server stopped");
+                TcpClient client = listener.AcceptTcpClient();
+                readFromClient(client);
             });
             thread.Start();
         }

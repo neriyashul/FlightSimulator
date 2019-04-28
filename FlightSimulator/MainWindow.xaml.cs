@@ -27,12 +27,12 @@ namespace FlightSimulator
         public static IModel model;
         public MainWindow()
         {
-            ITelnetServer s = new MyTcpServer(new ReadArgumentsClientHandler());
-            ITelnetClient c = new MyTcpClient();
-            model = new MyModel(s, c);
             InitializeComponent();
         }
 
-
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }

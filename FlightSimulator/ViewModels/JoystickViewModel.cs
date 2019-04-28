@@ -15,16 +15,15 @@ namespace FlightSimulator.ViewModels
         private IModel model;
         public JoystickViewModel()
         {
-            model = MainWindow.model;
+            model = MyModel.Instance;
         }
 
         private void sendStringCommand(string command)
         {
-            if (!model.isClientConnected())
+            if (model.isClientConnected())
             {
-                model.connectClient();
+                model.sendStringCommand(command);
             }
-            model.sendStringCommand(command);
         }
         public double Aileron
         {
@@ -35,7 +34,7 @@ namespace FlightSimulator.ViewModels
             set
             {
                 model.Aileron = value;
-                sendStringCommand("set /controls/flight/aileron " + model.Aileron);
+                sendStringCommand("set controls/flight/aileron " + model.Aileron);
                 NotifyPropertyChanged("Aileron");
             }
         }
@@ -48,7 +47,7 @@ namespace FlightSimulator.ViewModels
             set
             {
                 model.Elevator = value;
-                sendStringCommand("set /controls/flight/elevator " + model.Elevator);
+                sendStringCommand("set controls/flight/elevator " + model.Elevator);
                 NotifyPropertyChanged("Elevator");
             }
         }

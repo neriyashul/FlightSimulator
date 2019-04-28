@@ -27,7 +27,7 @@ namespace FlightSimulator.Views
     {
         ObservableDataSource<Point> planeLocations = null;
 
-        private FlightBoardViewModel vm = new FlightBoardViewModel(MainWindow.model);
+        private FlightBoardViewModel vm = new FlightBoardViewModel(MyModel.Instance);
         public FlightBoard()
         {
             vm.PropertyChanged += Vm_PropertyChanged;
@@ -46,7 +46,7 @@ namespace FlightSimulator.Views
 
         private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
+            if(e.PropertyName.Equals("Latitude") || e.PropertyName.Equals("Longitude"))
             {
                 Point p1 = new Point(vm.Latitude,vm.Longitude);
                 planeLocations.AppendAsync(Dispatcher, p1);

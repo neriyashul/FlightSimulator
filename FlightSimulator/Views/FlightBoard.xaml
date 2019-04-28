@@ -33,9 +33,9 @@
             <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">Lat</TextBlock>
 
             <!--Buttons-->
-            <Button  Content="Disonnect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="41" Width="86" Command="{Binding DisconnectCommand}" Margin="183.333,42,497.333,331.667"/>
-            <Button  Content="Connect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="41" Width="86" Command="{Binding ConnectCommand}" Margin="352.333,42,328.333,331.667"/>
-            <Button Content="Settings" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  Width="86" Command="{Binding SettingCommand}" Margin="527.333,39,153.333,334.667" />
+            <Button  Content="Disonnect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="41" Width="86" Command="{Binding DisconnectCommand}" Margin="183.333,42,497.333,331.667" FontWeight="Bold" FontSize="14"/>
+            <Button  Content="Connect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="41" Width="86" Command="{Binding ConnectCommand}" Margin="352.333,42,328.333,331.667" FontSize="14" FontWeight="Bold"/>
+            <Button Content="Settings" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  Width="86" Command="{Binding SettingCommand}" Margin="527.333,39,153.333,334.667" FontSize="14" FontWeight="Bold" />
 
         </Grid>
     </Viewbox>
