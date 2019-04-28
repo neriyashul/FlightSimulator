@@ -27,7 +27,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Style="{StaticResource LabelStyle}" LayoutTransform="{StaticResource rotate}" VerticalAlignment="Center">Lon</TextBlock>
-        <d3:ChartPlotter Grid.Row="0" LegendVisible="False" Name="plotter" Margin="17,86,18,14" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <d3:ChartPlotter Grid.Row="0" LegendVisible="False" Name="plotter" Margin="11.333,86,18,18.333" Grid.Column="1"/>
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">Lat</TextBlock>
 
         <!--Buttons-->
