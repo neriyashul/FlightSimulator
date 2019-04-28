@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:FlightSimulator.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBlock" x:Key="LabelStyle">
@@ -19,20 +20,29 @@
             <RotateTransform x:Key="rotate" Angle="90"/>
         </Grid.Resources>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="42"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <TextBlock Style="{StaticResource LabelStyle}" LayoutTransform="{StaticResource rotate}" VerticalAlignment="Center">Lon</TextBlock>
-        <d3:ChartPlotter Grid.Row="0" LegendVisible="False" Name="plotter" Margin="17,86,18,14" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center">Lat</TextBlock>
 
         <!--Buttons-->
-        <Button  Content="Connect" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="21" Width="74" Command="{Binding ConnectCommand}" Margin="168,62,484,332"/>
-        <Button Content="Settings" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  Width="74" Height="21" Command="{Binding SettingCommand}" Margin="512,59,140,335" />
+        <Button  Content="Connect" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Height="21" Command="{Binding ConnectCommand}" Margin="187,2,504,0"/>
+        <Button Content="Settings" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Height="21" Command="{Binding SettingCommand}" Margin="527,1,164,0" />
+
+
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Column="0" Grid.RowSpan="2"
+                   LayoutTransform="{StaticResource rotate}" VerticalAlignment="Center">Lon</TextBlock>
+        
+        <d3:ChartPlotter Grid.Row="1" LegendVisible="False" Name="plotter"
+                         Grid.Column="1" HorizontalAlignment="Right" Width="765" Margin="0,2,0,0"/>
+        
+        <TextBlock Grid.Row="2" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center" Grid.Column="1">Lat</TextBlock>
+
+
 
     </Grid>
 </UserControl>

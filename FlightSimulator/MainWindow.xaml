@@ -11,12 +11,12 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <flightBoardUC:FlightBoard Grid.Column="0"/>
+        <flightBoardUC:FlightBoard Grid.Column="0">
+            
+        </flightBoardUC:FlightBoard>
+            
 
-
-
-
-        <!--<Windows:ManualControl HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Center"/>-->
+            <!--<Windows:ManualControl HorizontalAlignment="Center"  Grid.Column="1" VerticalAlignment="Center"/>-->
 
 
         <TabControl Name="pilot" Grid.Column="1">
